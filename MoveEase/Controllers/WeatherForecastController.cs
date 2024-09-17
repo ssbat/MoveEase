@@ -1,5 +1,6 @@
-using Library.Entities;
 using Microsoft.AspNetCore.Mvc;
+using MoveEaseLibrary.Entities;
+using MoveEaseLibrary.Repositories;
 
 namespace MoveEase.Controllers
 {
@@ -10,17 +11,19 @@ namespace MoveEase.Controllers
 
 
         private readonly ILogger<UserController> _logger;
+        private readonly IUserRepository _userRepository;
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger, IUserRepository userRepository)
         {
             _logger = logger;
+            _userRepository = userRepository;
         }
 
         [HttpPost("create")]
         public IActionResult CreateUser([FromBody]User user)
         {
-
-            return Ok(user);
+            var userVM = _userRepository.CreateUser(user);
+            return Ok(userVM);
         }
 
     }

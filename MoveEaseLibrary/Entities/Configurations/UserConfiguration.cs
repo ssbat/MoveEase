@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using MoveEaseLibrary.Entities;
 
-namespace Library.Entities.Configurations
+namespace MoveEaseLibrary.Entities.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

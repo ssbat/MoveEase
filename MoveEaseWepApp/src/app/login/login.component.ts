@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
     });
 
     this.signupForm = this.fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -58,6 +60,7 @@ export class LoginComponent implements OnInit {
       this.signupForm.valid &&
       this.signupForm.value.password === this.signupForm.value.confirmPassword
     ) {
+        this._userService.createUser( this.signupForm.value).subscribe(result => console.log(result))
       console.log('Signup Form Submitted', this.signupForm.value);
     } else {
       console.log('Signup Form is Invalid or passwords do not match');

@@ -1,7 +1,7 @@
-﻿using Library.Entities;
+﻿using MoveEaseLibrary.Entities;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Library.Entities.Configurations;
+using MoveEaseLibrary.Entities.Configurations;
 
 namespace MoveEaseLibrary.EF
 {

@@ -27,6 +27,20 @@
     <!-- Signup Form -->
     <form [formGroup]="signupForm" *ngIf="!isLoginMode" (ngSubmit)="onSignup()">
       <div>
+        <label>First Name</label>
+        <input formControlName="firstName" placeholder="exp: Saad" />
+        <!-- <div *ngIf="signupForm.get('confirmPassword')?.value !== signupForm.get('password')?.value && signupForm.get('confirmPassword')?.touched">
+          Passwords do not match.
+        </div> -->
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input formControlName="lastName"  placeholder="exp : Sbat" />
+        <!-- <div *ngIf="signupForm.get('confirmPassword')?.value !== signupForm.get('password')?.value && signupForm.get('confirmPassword')?.touched">
+          Passwords do not match.
+        </div> -->
+      </div>
+      <div>
         <label>Email</label>
         <input formControlName="email" type="email" placeholder="Enter your email" />
         <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">

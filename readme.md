@@ -1,0 +1,2 @@
+dotnet ef migrations add AddSomeMissingPropertiesForUser --startup-project MoveEase --project MoveEaseLibrary --context AppDbContext
+ dotnet ef database update Initial --startup-project MoveEase --project MoveEaseLibrary --context AppDbContext
