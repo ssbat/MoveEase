@@ -1,0 +1,61 @@
+<!-- login.component.html -->
+<div class="container">
+    <h2 *ngIf="isLoginMode">Login</h2>
+    <h2 *ngIf="!isLoginMode">Sign Up</h2>
+  
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" *ngIf="isLoginMode" (ngSubmit)="onLogin()">
+      <div>
+        <label>Email</label>
+        <input formControlName="email" type="email" placeholder="Enter your email" />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          Please enter a valid email.
+        </div>
+      </div>
+  
+      <div>
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter your password" />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+  
+    <!-- Signup Form -->
+    <form [formGroup]="signupForm" *ngIf="!isLoginMode" (ngSubmit)="onSignup()">
+      <div>
+        <label>Email</label>
+        <input formControlName="email" type="email" placeholder="Enter your email" />
+        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+          Please enter a valid email.
+        </div>
+      </div>
+  
+      <div>
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter your password" />
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+  
+      <div>
+        <label>Confirm Password</label>
+        <input formControlName="confirmPassword" type="password" placeholder="Confirm your password" />
+        <div *ngIf="signupForm.get('confirmPassword')?.value !== signupForm.get('password')?.value && signupForm.get('confirmPassword')?.touched">
+          Passwords do not match.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+    </form>
+  
+    <!-- Toggle Button -->
+    <button (click)="switchMode()">
+      {{ isLoginMode ? 'Switch to Sign Up' : 'Switch to Login' }}
+    </button>
+  </div>
+  
